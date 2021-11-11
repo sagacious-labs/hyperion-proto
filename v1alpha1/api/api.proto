@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/sagacious-labs/hyperion/pkg/protos/v1alpha1/api";
+option go_package = "github.com/sagacious-labs/k8trics/pkg/protos/v1alpha1/api";
 
 package hyperion.v1alpha1.api;
 
