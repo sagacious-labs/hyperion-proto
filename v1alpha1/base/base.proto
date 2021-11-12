@@ -17,25 +17,27 @@ message ModuleCore {
 }
 
 message ModuleMetadata {
-	message moduleRelease {
-		string location = 1;
-		string sha256 = 2;
+	message Releases {
+		message ModuleRelease {
+			string location = 1;
+			string sha256 = 2;
+		}
+
+		ModuleRelease linuxAMD64 = 1;
+		ModuleRelease linuxARM64 = 2;
 	}
 
 	map<string, string> labels = 1;
-	oneof release {
-		moduleRelease linuxAMD64 = 2;
-		moduleRelease linuxARM64 = 3;
-	}
+	Releases release = 2; 
 }
 
 message ModuleSpec {
-	string data = 1;
-
-	oneof dataSource {
-		LabelSelector label = 2;
-		ModuleCore core = 3;
+	message DataSource {
+		LabelSelector label = 1;
 	}
+
+	string data = 1;
+	DataSource dataSource = 2; 
 }
 
 message ModuleStatus {
